@@ -1,7 +1,7 @@
 const products = [
     {
-        title: 'product1',
-        description: 'bla bla bla',
+        title: 'product 1',
+        description: 'hungry squirrel',
         imageUrl: 'https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99-s800-c85.jpg',
         size: '4" x 4"',
         weight: '8 oz.',
@@ -12,8 +12,8 @@ const products = [
     },
 
     {
-        title: 'product2',
-        description: 'bla bla bla',
+        title: 'product 2',
+        description: 'girly squirrel',
         imageUrl: 'https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99-s800-c85.jpg',
         size: '4" x 4"',
         weight: '8 oz.',
@@ -23,8 +23,8 @@ const products = [
         validUntil: '04/01/2016'
     },
     {
-        title: 'product3',
-        description: 'bla bla bla',
+        title: 'product 3',
+        description: 'early squirrel',
         imageUrl: 'https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99-s800-c85.jpg',
         size: '4" x 4"',
         weight: '8 oz.',
@@ -34,8 +34,8 @@ const products = [
         validUntil: '04/01/2016'
     },
     {
-        title: 'product4',
-        description: 'bla bla bla',
+        title: 'product 4',
+        description: 'surly squirrel',
         imageUrl: 'https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99-s800-c85.jpg',
         size: '4" x 4"',
         weight: '8 oz.',
@@ -45,8 +45,8 @@ const products = [
         validUntil: '04/01/2016'
     },
     {
-        title: 'product5',
-        description: 'bla bla bla',
+        title: 'product 5',
+        description: 'merely squirrel',
         imageUrl: 'https://media.npr.org/assets/img/2017/04/25/istock-115796521-fcf434f36d3d0865301cdcb9c996cfd80578ca99-s800-c85.jpg',
         size: '4" x 4"',
         weight: '8 oz.',
@@ -63,13 +63,24 @@ const printToDom = (divId, textToPrint) => {
 };
 const cardBuilder = (merp) => {
     let domString = '';
-    domString += `<div class="container">`;
-    domString += `<div class="row">`;
     merp.forEach((product) => {
-        domString += `<div class="col-4">${product.title}</div>`;
+        domString += `<div class="col-4 product">`;
+        domString += `<div class="card">`;
+        domString += `<div class="card-header"><strong>${product.title}</strong></div>`;
+        domString +=     `<img src=${product.imageUrl} class="card-img-top" alt="...">`;
+        domString +=     `<div class="card-body">`;
+        domString +=         `<p class="card-text">${product.description}</p>`;
+        domString +=         `<h6>Size: ${product.size}</h6>`;
+        domString +=         `<h6>Weight: ${product.weight}</h6>`;
+        domString +=         `<h6>Three for: ${product.price1}</h6>`;
+        domString +=         `<h6>Two for: ${product.price2}</h6>`;
+        domString +=         `<h6>One for: ${product.price3}</h6>`;
+        domString +=         `<h6>Available until: ${product.validUntil}</h6>`;
+        domString +=     `</div>`;
+        domString += `</div>`;
+        domString += `</div>`;
     })
-    domString += `</div>`;
-    domString += `</div>`;
+    
     printToDom('some-cards', domString);
 };
 
